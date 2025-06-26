@@ -3,7 +3,7 @@ package com.whiteroadtojava.backend.modul;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.data.annotation.Transient;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +29,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Recipe> recipe;
 
-    @Transient
+    @OneToMany(mappedBy = "user")
     private List<Review> review;
 }

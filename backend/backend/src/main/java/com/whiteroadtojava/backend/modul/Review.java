@@ -1,6 +1,5 @@
 package com.whiteroadtojava.backend.modul;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int stars;
-    private String feedbacj;
+    private String feedback;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
