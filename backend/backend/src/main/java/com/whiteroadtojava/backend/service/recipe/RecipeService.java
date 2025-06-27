@@ -16,7 +16,7 @@ public interface RecipeService {
 
         Recipe getRecipeById(Long id);
 
-        Recipe updaRecipe(RecipeUpdateRequest request, Long recipeId);
+        Recipe updateRecipe(RecipeUpdateRequest request, Long recipeId);
 
         void deleteRecipe(Long id);
 
@@ -27,7 +27,28 @@ public interface RecipeService {
         static Recipe creaRecipe(CreateRecipeRequest request, User user) {
                 Recipe recipe = new Recipe();
                 Recipe createRequerst = new Recipe();
-
-                recipe.setTitle(createRequerst.getTitle());           
+                recipe.setTitle(createRequerst.getTitle());
+                recipe.setDescription(createRequerst.getDescription());
+                recipe.setCategory(createRequerst.getCategory());
+                recipe.setCuisine(createRequerst.getCuisine());
+                recipe.setIngredients(createRequerst.getIngredients());
+                recipe.setInstuction(createRequerst.getInstuction());
+                recipe.setPrepTime(createRequerst.getPrepTime());
+                recipe.setCookTime(createRequerst.getCookTime());
+                recipe.setUser(createRequerst.getUser());
+                return recipe;
         }
+
+        static Recipe updateRecipe(Recipe existingRecipe, RecipeUpdateRequest request) {
+                existingRecipe.setTitle(request.getTitle());
+                existingRecipe.setDescription(request.getDescription());
+                existingRecipe.setCategory(request.getCategory());
+                existingRecipe.setCuisine(request.getCuisine());
+                existingRecipe.setIngredients(request.getIngredients());
+                existingRecipe.setInstuction(request.getInstuction());
+                existingRecipe.setPrepTime(request.getPrepTime());
+                existingRecipe.setCookTime(request.getCookTime());
+                return existingRecipe;
+        }
+
 }

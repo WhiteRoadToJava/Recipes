@@ -15,12 +15,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+import lombok.NoArgsConstructor;
+
+
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

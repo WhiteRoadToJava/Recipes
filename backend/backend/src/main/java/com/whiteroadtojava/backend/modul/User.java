@@ -11,12 +11,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,4 +31,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Review> review;
+
+
+    public User(String username) {
+        this.username = username;
+    }
 }

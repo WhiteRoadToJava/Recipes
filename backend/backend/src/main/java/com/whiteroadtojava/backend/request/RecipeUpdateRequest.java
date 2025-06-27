@@ -8,7 +8,7 @@ import lombok.Data;
 public class RecipeUpdateRequest {
 
         private String title;
-        private String instuctions;
+        private String instuction;
         private String prepTime;
         private String cookTime;
         private String category;
