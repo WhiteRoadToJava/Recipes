@@ -1,12 +1,12 @@
-package com.whiteroadtojava.backend.service.recipe;
+package com.example.cocks_recipe.service.recipe;
 
 import java.util.List;
 import java.util.Set;
 
-import com.whiteroadtojava.backend.modul.Recipe;
-import com.whiteroadtojava.backend.modul.User;
-import com.whiteroadtojava.backend.request.CreateRecipeRequest;
-import com.whiteroadtojava.backend.request.RecipeUpdateRequest;
+import com.example.cocks_recipe.model.Recipe;
+import com.example.cocks_recipe.model.User;
+import com.example.cocks_recipe.request.CreateRecipeRequest;
+import com.example.cocks_recipe.request.RecipeUpdateRequest;
 
 public interface RecipeService {
 
@@ -14,11 +14,11 @@ public interface RecipeService {
 
         List<Recipe> getAllRecipes();
 
-        Recipe getRecipeById(Long id);
+        Recipe getRecipeById(String id);
 
-        Recipe updateRecipe(RecipeUpdateRequest request, Long recipeId);
+        Recipe updateRecipe(RecipeUpdateRequest request, String recipeId);
 
-        void deleteRecipe(Long id);
+        void deleteRecipe(String id);
 
         Set<String> getAllRecipesCategories();
 
@@ -26,15 +26,15 @@ public interface RecipeService {
 
         static Recipe creaRecipe(CreateRecipeRequest request, User user) {
                 Recipe recipe = new Recipe();
-                Recipe createRequerst = request.getRecipe();
-                recipe.setTitle(createRequerst.getTitle());
-                recipe.setDescription(createRequerst.getDescription());
-                recipe.setCategory(createRequerst.getCategory());
-                recipe.setCuisine(createRequerst.getCuisine());
-                recipe.setIngredients(createRequerst.getIngredients());
-                recipe.setInstuction(createRequerst.getInstuction());
-                recipe.setPrepTime(createRequerst.getPrepTime());
-                recipe.setCookTime(createRequerst.getCookTime());
+                Recipe createRequest = request.getRecipe();
+                recipe.setTitle(createRequest.getTitle());
+                recipe.setDescription(createRequest.getDescription());
+                recipe.setCategory(createRequest.getCategory());
+                recipe.setCuisine(createRequest.getCuisine());
+                recipe.setIngredients(createRequest.getIngredients());
+                recipe.setInstuction(createRequest.getInstuction());
+                recipe.setPrepTime(createRequest.getPrepTime());
+                recipe.setCookTime(createRequest.getCookTime());
                 recipe.setUser(user);
                 return recipe;
         }

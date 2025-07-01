@@ -1,12 +1,11 @@
-package com.whiteroadtojava.backend.controller;
-
+package com.example.cocks_recipe.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.whiteroadtojava.backend.modul.Recipe;
-import com.whiteroadtojava.backend.request.CreateRecipeRequest;
-import com.whiteroadtojava.backend.request.RecipeUpdateRequest;
-import com.whiteroadtojava.backend.service.recipe.RecipeService;
+import com.example.cocks_recipe.model.Recipe;
+import com.example.cocks_recipe.request.CreateRecipeRequest;
+import com.example.cocks_recipe.request.RecipeUpdateRequest;
+import com.example.cocks_recipe.service.recipe.RecipeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,12 +38,12 @@ public class RecipeController {
                 return ResponseEntity.status(200).body(recipeService.createRecipe(request));
         }
         @PutMapping("/{recipeid}/update")
-        public ResponseEntity<Recipe> updateRecipe(@RequestBody RecipeUpdateRequest request, @PathVariable Long id) {
+        public ResponseEntity<Recipe> updateRecipe(@RequestBody RecipeUpdateRequest request, @PathVariable String id) {
                 return ResponseEntity.status(200).body(recipeService.updateRecipe(request, id));
         }
 
         @DeleteMapping("/{recipeId}/delete")
-        public ResponseEntity<Void> deleteRecipe(@PathVariable Long recipeId) {
+        public ResponseEntity<Void> deleteRecipe(@PathVariable String recipeId) {
                 recipeService.deleteRecipe(recipeId);
                 return ResponseEntity.status(204).build();
         }
@@ -56,7 +55,7 @@ public class RecipeController {
         
 
         @GetMapping("/{recipeId}/recipe")
-        public ResponseEntity<Recipe> getRecipe(Long recipeId) {
+        public ResponseEntity<Recipe> getRecipe(String recipeId) {
                 return ResponseEntity.ok(recipeService.getRecipeById(recipeId));
         }
 

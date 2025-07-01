@@ -8,4 +8,7 @@ import lombok.Data;
 public class CreateRecipeRequest {
         private Recipe recipe;
         private User user;
+
+
+
 }

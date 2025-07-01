@@ -1,36 +1,32 @@
-package com.whiteroadtojava.backend.service.recipe;
-
+package com.example.cocks_recipe.service.recipe;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Service;
-
-import com.whiteroadtojava.backend.modul.Recipe;
-import com.whiteroadtojava.backend.modul.User;
-import com.whiteroadtojava.backend.repository.RecipeRepository;
-import com.whiteroadtojava.backend.repository.UserRepository;
-import com.whiteroadtojava.backend.request.CreateRecipeRequest;
-import com.whiteroadtojava.backend.request.RecipeUpdateRequest;
-
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import com.example.cocks_recipe.model.Recipe;
+import com.example.cocks_recipe.model.User;
+import com.example.cocks_recipe.repository.RecipeRepository;
+import com.example.cocks_recipe.repository.UserRepository;
+import com.example.cocks_recipe.request.CreateRecipeRequest;
+import com.example.cocks_recipe.request.RecipeUpdateRequest;
 
-@Service
+
+@Service 
 @RequiredArgsConstructor
-public class RecipeServiceImpl implements RecipeService {
+public class RecipeServiceImpl  {
+
         private final RecipeRepository recipeRepsitory;
         private final UserRepository userRepository;
-
+/* 
         @Override
         public Recipe createRecipe(CreateRecipeRequest request) {
                 if (request == null || request.getUser() == null) {
                                 throw new IllegalArgumentException("Invalid request or user.");
                 }
                 User user = Optional.ofNullable(userRepository.findByUsername(request.getUser().getUsername())).map(existingUser -> {
-                        existingUser.getRecipe().add(request.getRecipe());
+                        existingUser.getRecipes().add(request.getRecipe());
                         return existingUser;
                 }).orElseGet(() -> {
                         User newUser = new User(request.getUser().getUsername());
@@ -43,7 +39,7 @@ public class RecipeServiceImpl implements RecipeService {
         }
 
         @Override
-        public Recipe updateRecipe(RecipeUpdateRequest request, Long recipeId) {
+        public Recipe updateRecipe(RecipeUpdateRequest request, String recipeId) {
                 Recipe recipe = getRecipeById(recipeId);
                 Recipe theRecipe = RecipeService.updateRecipe(recipe, request);
                 return recipeRepsitory.save(theRecipe);
@@ -56,12 +52,13 @@ public class RecipeServiceImpl implements RecipeService {
         }
 
         @Override
-        public Recipe getRecipeById(Long id) {
-                return recipeRepsitory.findById(id).orElseThrow(() -> new EntityNotFoundException("Recipe not Found."));
+        public Recipe getRecipeById(String id) {
+                return recipeRepsitory.findById(id)
+                                .orElseThrow(() -> new IllegalArgumentException("Recipe not found with id: " + id));   
         }
 
         @Override
-        public void deleteRecipe(Long id) {
+        public void deleteRecipe(String id) {
                 recipeRepsitory.deleteById(id);
         }
 
@@ -78,5 +75,5 @@ public class RecipeServiceImpl implements RecipeService {
                                 .stream()
                                 .map(Recipe::getCuisine).collect(Collectors.toSet());
         }
-
+                                */
 }
